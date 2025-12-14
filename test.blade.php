@@ -72,6 +72,12 @@ Hello, {!! $name !!}.
     <!-- current user cannot publish the post -->
 @endcannot
 
+@canany(['update', 'view'], $post)
+    <!-- current user can either update or view post -->
+@elsecanany(['create'], \App\Models\Post::class)
+    <!-- current user can create a post -->
+@endcanany
+
 <div>
     @include('shared.errors')
     <form>
