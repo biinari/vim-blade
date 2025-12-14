@@ -290,3 +290,9 @@ do_not_highlight@php.net
 @includeWhen($condition, 'view.name')
 @includeUnless($condition, 'view.name')
 @includeFirst(['custom.name', 'name'])
+
+<x-profile :$userId :$name />
+<x-profile :user-id="$userId ?? null" :name="$name" />
+
+{{-- double colon prefix not treated as php --}}
+<x-collapse ::class="{ collapsed: isCollapsed }" />

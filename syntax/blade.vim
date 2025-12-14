@@ -45,6 +45,10 @@ syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse
 syn keyword bladeAttrParen @class @style @checked @selected @disabled @readonly @required
     \ nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeAttrExempt
 
+syn match bladeAttrVar "\<:\$\w\+=\@!" contains=phpIdentifier containedin=ALLBUT,@bladeAttrExempt
+syn match bladeAttrString #\<:[A-Za-z0-9-\.]\+=\ze["']# nextgroup=bladePhpQuoteBlock containedin=ALLBUT,@bladeAttrExempt contains=bladeAttrEq
+syn match bladeAttrEq '=' contained
+
 if exists('g:blade_custom_directives')
     exe "syn keyword bladeKeyword @" . join(g:blade_custom_directives, ' @') . " nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt"
 endif
@@ -57,10 +61,12 @@ syn region  bladePhpRegion  matchgroup=bladeKeyword start="\<@php\>\s*(\@!" end=
 syn match   bladeKeyword "@php\ze\s*(" nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt
 
 syn region  bladePhpParenBlock  matchgroup=bladeDelimiter start="\s*(" end=")" contains=@bladePhp,bladePhpParenBlock skipwhite contained
+syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start='\(\<:[A-Za-z0-9-\.]\+=\)\@<="' end='"' contains=@bladePhp contained
+syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start="\(\<:[A-Za-z0-9-\.]\+=\)\@<='" end="'" contains=@bladePhp contained
 
 syn cluster bladePhp contains=@phpClTop
-syn cluster bladeExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,@htmlTop
-syn cluster bladeAttrExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock
+syn cluster bladeExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,bladePhpQuoteBlock,@htmlTop
+syn cluster bladeAttrExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,bladePhpQuoteBlock
 
 syn cluster htmlPreproc add=bladeEcho,bladeComment,bladePhpRegion
 
@@ -71,7 +77,12 @@ hi def link bladeDelimiter      PreProc
 hi def link bladeComment        Comment
 hi def link bladeTodo           Todo
 hi def link bladeKeyword        Statement
-hi def link bladeAttrParen      Special
+
+hi def link bladeAttr           Special
+hi def link bladeAttrParen      bladeAttr
+hi def link bladeAttrString     bladeAttr
+hi def link bladeAttrVar        bladeAttr
+hi def link bladeAttrEq         htmlTag
 
 let b:current_syntax = 'blade'
 
