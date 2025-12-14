@@ -37,6 +37,8 @@ Hello, {!! $name !!}.
 
 @forelse ($users as $user)
     <li>{{ $user->name }}</li>
+    @break ($user->last)
+    @continue ($user->skip)
 @empty
     <p>No users</p>
 @endforelse
@@ -117,6 +119,10 @@ Hello, {!! $name !!}.
     <p>This is appended to the master sidebar.</p>
 @endsection
 
+@sectionMissing('navigation')
+    default navigation
+@endif
+
 <input name="example" {{ old('example') ? 'checked' : '' }} />
 
 <?php
@@ -190,10 +196,30 @@ do_not_highlight@php.net
     not authenticated
 @endguest
 
+@production
+    only in production
+@endproduction
+
+@env(['staging', 'production'])
+    in staging or production
+@endenv
+
+@session('status')
+    session status is {{ $value }}
+@endsession
+
+@context('canonical')
+    <link href="{{ $value }}" rel="canonical">
+@endcontext
+
 @switch($i)
     @case(1)
         case code
         @break
+
+    @default
+        default case
+
 @endswitch
 
 @includeFirst
