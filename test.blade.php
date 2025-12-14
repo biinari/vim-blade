@@ -158,27 +158,40 @@ Hello, {!! $name !!}.
     default navigation
 @endif
 
-<input name="example" {{ old('example') ? 'checked' : '' }} />
+<form method="POST">
+    @method('PUT')
+    @csrf
 
-<input type="checkbox" @checked(old('active', $isActive)) />
+    <input name="example" {{ old('example') ? 'checked' : '' }} />
 
-<input
-    type="text"
-    @class($classes)
-    @style($styles)
-    value="initial"
-    @disabled($disable)
-    @readonly($user->isNotAdmin())
-    @required($user->isAdmin())
-/>
+    <input
+        type="checkbox"
+        name="terms"
+        @checked(old('active', $isActive))
+        class="@error('terms') is-invalid @else is-valid @enderror"
+    />
+    @error('terms')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
 
-<select name="shape">
-    @foreach ($shapes as $shape)
-        <option value="{{ $shape }}" @selected(old('shape') == $shape)>
-            {{ $shape }}
-        </option>
-    @endforeach
-</select>
+    <input
+        type="text"
+        @class($classes)
+        @style($styles)
+        value="initial"
+        @disabled($disable)
+        @readonly($user->isNotAdmin())
+        @required($user->isAdmin())
+    />
+
+    <select name="shape">
+        @foreach ($shapes as $shape)
+            <option value="{{ $shape }}" @selected(old('shape') == $shape)>
+                {{ $shape }}
+            </option>
+        @endforeach
+    </select>
+</form>
 
 <?php
     $collection = collect([
