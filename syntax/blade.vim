@@ -42,6 +42,9 @@ syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse
     \ @endenv @endonce @endPushOnce @endcontext @endsession @default
     \ containedin=ALLBUT,@bladeExempt
 
+syn keyword bladeAttrParen @class @style @checked @selected @disabled @readonly @required
+    \ nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeAttrExempt
+
 if exists('g:blade_custom_directives')
     exe "syn keyword bladeKeyword @" . join(g:blade_custom_directives, ' @') . " nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt"
 endif
@@ -57,6 +60,7 @@ syn region  bladePhpParenBlock  matchgroup=bladeDelimiter start="\s*(" end=")" c
 
 syn cluster bladePhp contains=@phpClTop
 syn cluster bladeExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,@htmlTop
+syn cluster bladeAttrExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock
 
 syn cluster htmlPreproc add=bladeEcho,bladeComment,bladePhpRegion
 
@@ -67,6 +71,7 @@ hi def link bladeDelimiter      PreProc
 hi def link bladeComment        Comment
 hi def link bladeTodo           Todo
 hi def link bladeKeyword        Statement
+hi def link bladeAttrParen      Special
 
 let b:current_syntax = 'blade'
 

@@ -125,6 +125,26 @@ Hello, {!! $name !!}.
 
 <input name="example" {{ old('example') ? 'checked' : '' }} />
 
+<input type="checkbox" @checked(old('active', $isActive)) />
+
+<input
+    type="text"
+    @class($classes)
+    @style($styles)
+    value="initial"
+    @disabled($disable)
+    @readonly($user->isNotAdmin())
+    @required($user->isAdmin())
+/>
+
+<select name="shape">
+    @foreach ($shapes as $shape)
+        <option value="{{ $shape }}" @selected(old('shape') == $shape)>
+            {{ $shape }}
+        </option>
+    @endforeach
+</select>
+
 <?php
     $collection = collect([
         'foo' => [
@@ -221,5 +241,18 @@ do_not_highlight@php.net
         default case
 
 @endswitch
+
+<a
+    href="#"
+    @class([
+        'p-4',
+        'active' => $isActive,
+        'big' => $size > 4, // html tag should not end yet
+    ])
+    @style([
+        'margin: 0',
+        'font-weight: bold' => $isActive,
+    ])
+>Link</a>
 
 @includeFirst
