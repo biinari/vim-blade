@@ -1,5 +1,12 @@
 @props(['foo' => 'bar', 'baz'])
 
+@use('App\Models\Example', 'Alias')
+@use('App\Models\{Foo, Bar}')
+@use(function App\Helpers\format_currency)
+@use(const App\Constants\MAX_ATTEMPTS)
+@use(function App\Helpers\{format_currency, format_date})
+@use(const App\Constants\{MAX_ATTEMPTS, DEFAULT_TIMEOUT})
+
 <?php if($foo='bar' ) { $something() } ?>
 Hello, {{ $name }}.
 
