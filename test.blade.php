@@ -82,9 +82,29 @@ Hello, {!! $name !!}.
 
 @inject('metrics', 'App\Services\MetricsService')
 
-@push('scripts')
+@once
+    @push('scripts')
+        <script src="/example.js"></script>
+    @endpush
+@endonce
+
+@pushOnce('scripts')
     <script src="/example.js"></script>
-@endpush
+@endPushOnce
+
+@pushIf($shouldPush, 'scripts')
+    <script src="/maybe.js"></script>
+@elsePushIf($pushOther, 'scripts')
+    <script src="/other.js"></script>
+@elsePush
+    <script src="/fallback.js"></script>
+@endPushIf
+
+@hasstack('list')
+    <ul>
+        @stack('list')
+    </ul>
+@endif
 
 <head>
     <!-- Head Contents -->
@@ -103,6 +123,10 @@ Hello, {!! $name !!}.
     <script src="{{ mix('/js/manifest.js') }}"></script>
     <script src="{{ mix('/js/vendor.js') }}"></script>
 @endprepend
+
+@prependOnce('scripts')
+    <script src="{{ mix('/js/prepend.js') }}"></script>
+@endPrependOnce
 
 <div>
     @section('sidebar')
