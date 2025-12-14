@@ -30,7 +30,7 @@ syn region  bladeEcho       matchgroup=bladeDelimiter start="{!!" end="!!}"  con
 syn region  bladeComment    matchgroup=bladeDelimiter start="{{--" end="--}}"  contains=bladeTodo  containedin=ALLBUT,@bladeExempt keepend
 
 syn keyword bladeKeyword @if @elseif @foreach @forelse @for @while @can @cannot @elsecan @elsecannot @include
-    \ @includeIf @each @inject @extends @section @stack @push @unless @yield @parent @hasSection @break @continue
+    \ @includeIf @each @inject @extends @section @stack @push @unless @yield @@parent @hasSection @break @continue
     \ @unset @lang @choice @component @slot @prepend @json @isset @auth @guest @switch @case @includeFirst @empty
     \ @includeWhen @props @livewire @error @production @env @sectionMissing @disabled @readonly @required
     \ @includeUnless @once @pushOnce @pushIf @elsePushIf @elsePush @prependOnce @hasstack @context @session @use
