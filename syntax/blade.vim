@@ -34,13 +34,13 @@ syn keyword bladeKeyword @if @elseif @foreach @forelse @for @while @can @cannot 
     \ @unset @lang @choice @component @slot @prepend @json @isset @auth @guest @switch @case @includeFirst @empty
     \ @includeWhen @props @livewire @error @production @env @sectionMissing @disabled @readonly @required
     \ @includeUnless @once @pushOnce @pushIf @elsePushIf @elsePush @prependOnce @hasstack @context @session @use
-    \ @aware @method
+    \ @aware @method @fragment
     \ nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt
 
 syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse @endwhile @endcan
     \ @endcannot @stop @append @endsection @endpush @show @overwrite @verbatim @endverbatim @endcomponent
     \ @endslot @endprepend @endisset @endempty @endauth @endguest @endswitch @enderror @endproduction
-    \ @endenv @endonce @endPushOnce @endPushIf @endPrependOnce @endcontext @endsession @default
+    \ @endenv @endonce @endPushOnce @endPushIf @endPrependOnce @endcontext @endsession @default @endfragment
     \ @csrf
     \ containedin=ALLBUT,@bladeExempt
 

@@ -139,6 +139,10 @@ Hello, {!! $name !!}.
     <script src="{{ mix('/js/prepend.js') }}"></script>
 @endPrependOnce
 
+@fragment('list')
+    <!-- list contents -->
+@endfragment
+
 <div>
     @section('sidebar')
         This is the master sidebar.
