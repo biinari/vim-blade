@@ -1,5 +1,7 @@
 @props(['foo' => 'bar', 'baz'])
 
+@aware(['parent' => 'property'])
+
 @use('App\Models\Example', 'Alias')
 @use('App\Models\{Foo, Bar}')
 @use(function App\Helpers\format_currency)
