@@ -255,4 +255,7 @@ do_not_highlight@php.net
     ])
 >Link</a>
 
-@includeFirst
+@includeIf('view.name')
+@includeWhen($condition, 'view.name')
+@includeUnless($condition, 'view.name')
+@includeFirst(['custom.name', 'name'])
