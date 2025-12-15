@@ -192,6 +192,7 @@ Hello, {!! $name !!}.
         @disabled($disable)
         @readonly($user->isNotAdmin())
         @required($user->isAdmin())
+        aria-disabled="@bool($disable)"
     />
 
     <select name="shape">
