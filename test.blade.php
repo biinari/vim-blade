@@ -254,6 +254,7 @@ do_not_highlight@php.net
 
 @lang('messages.welcome')
 @choice('messages.items', 3)
+@endlang
 
 @component('app')
     @slot('title')

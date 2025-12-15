@@ -42,7 +42,7 @@ syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse
     \ @endcannot @stop @append @endsection @endpush @show @overwrite @verbatim @endverbatim @endcomponent
     \ @endslot @endprepend @endisset @endempty @endauth @endguest @endswitch @enderror @endproduction
     \ @endenv @endonce @endPushOnce @endPushIf @endPrependOnce @endcontext @endsession @default @endfragment
-    \ @csrf @endcanany @viteReactRefresh
+    \ @csrf @endcanany @viteReactRefresh @endlang
     \ containedin=ALLBUT,@bladeExempt
 
 syn keyword bladeAttrParen @class @style @checked @selected @disabled @readonly @required
