@@ -134,6 +134,9 @@ Hello, {!! $name !!}.
     </title>
 
     @stack('scripts')
+
+    @viteReactRefresh
+    @vite('resources/js/app.jsx')
 </head>
 
 @prepend('scripts')
@@ -328,3 +331,4 @@ do_not_highlight@php.net
 
 {{-- double colon prefix not treated as php --}}
 <x-collapse ::class="{ collapsed: isCollapsed }" />
+
