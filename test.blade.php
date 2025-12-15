@@ -267,11 +267,15 @@ do_not_highlight@php.net
 @endempty
 
 @auth('admin')
-    authenticated
+    authenticated as admin
+@elseauth('editor')
+    authenticated as editor
 @endauth
 
 @guest('admin')
-    not authenticated
+    not authenticated as admin
+@elseguest('editor')
+    not authenticated as admin or guest
 @endguest
 
 @production
