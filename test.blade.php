@@ -332,3 +332,5 @@ do_not_highlight@php.net
 {{-- double colon prefix not treated as php --}}
 <x-collapse ::class="{ collapsed: isCollapsed }" />
 
+@dd($foo)
+@dump($foo)
