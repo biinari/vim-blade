@@ -35,6 +35,7 @@ syn keyword bladeKeyword @if @elseif @foreach @forelse @for @while @can @cannot 
     \ @includeWhen @props @livewire @error @production @env @sectionMissing @disabled @readonly @required
     \ @includeUnless @once @pushOnce @pushIf @elsePushIf @elsePush @prependOnce @hasstack @context @session @use
     \ @aware @method @fragment @canany @elsecanany @elseauth @elseguest @bool @vite @dd @dump @js
+    \ @extendsFirst
     \ nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt
 
 syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse @endwhile @endcan

@@ -3,6 +3,7 @@
 @aware(['parent' => 'property'])
 
 @extends('parent.name')
+@extendsFirst(["page.$id", "page.default"])
 
 @use('App\Models\Example', 'Alias')
 @use('App\Models\{Foo, Bar}')
