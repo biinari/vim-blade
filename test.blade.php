@@ -262,6 +262,8 @@ do_not_highlight@php.net
 
 @json($foo)
 
+@js($array) {{-- undocumented alternative to {{ Js::from($array) }} --}}
+
 @isset($foo)
     records
 @endisset
