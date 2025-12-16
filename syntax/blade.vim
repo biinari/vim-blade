@@ -81,7 +81,7 @@ hi def link bladeComment        Comment
 hi def link bladeTodo           Todo
 hi def link bladeKeyword        Statement
 
-hi def link bladeAttr           Special
+hi def link bladeAttr           PreProc
 hi def link bladeAttrParen      bladeAttr
 hi def link bladeAttrString     bladeAttr
 hi def link bladeAttrVar        bladeAttr
