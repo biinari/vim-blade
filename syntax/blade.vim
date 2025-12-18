@@ -64,8 +64,8 @@ syn region  bladePhpRegion  matchgroup=bladeKeyword start="\<@php\>\s*(\@!" end=
 syn match   bladeKeyword "@php\ze\s*(" nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt
 
 syn region  bladePhpParenBlock  matchgroup=bladeDelimiter start="\s*(" end=")" contains=@bladePhp,bladePhpParenBlock skipwhite contained
-syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start='\(\<:[A-Za-z0-9-\.]\+=\)\@<="' end='"' contains=@bladePhp contained
-syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start="\(\<:[A-Za-z0-9-\.]\+=\)\@<='" end="'" contains=@bladePhp contained
+syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start='\(\<:[A-Za-z0-9-\.]\+=\)\@50<="' end='"' contains=@bladePhp contained
+syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start="\(\<:[A-Za-z0-9-\.]\+=\)\@50<='" end="'" contains=@bladePhp contained
 
 syn cluster bladePhp contains=@phpClTop
 syn cluster bladeExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,bladePhpQuoteBlock,@htmlTop
