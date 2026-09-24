@@ -338,3 +338,93 @@ do_not_highlight@php.net
 
 @dd($foo)
 @dump($foo)
+
+{{-- livewire --}}
+@blaze
+
+<head>
+    @livewireStyles
+    @assets
+    <link rel="stylesheet" href="https://cdn.example.com/library.css">
+    @endassets
+</head>
+@livewireScripts
+@livewireScriptConfig
+
+<livewire:post.create :title="$title" />
+<livewire:admin::users-list defer />
+
+@foreach ($this->posts as $post)
+    <article wire:key="post-{{ $post->id }}">
+        <h2>{{ $post->title }}</h2>
+        <button wire:click="$parent.removePost({{ $post->id }})">Remove</button>
+    </article>
+@endforeach
+
+<livewire:edit-post @saved="$refresh" />
+<livewire:slow-content lazy :$value />
+
+<form wire:submit="save">
+    <input type="text" wire:model="piece">
+    <button type="button" x-on:click="$wire.piece = ''">Clear</button>
+    <input type="text" wire:keydown.enter="search($event.target.value)">
+
+    <button wire:click="$set('piece', '')">Reset piece</button>
+
+    <button type="button" x-on:click="$dispatch('custom-event')">Custom</button>
+    <button type="button" wire:click="$refresh">Refresh</button>
+    <span wire:loading>Saving...</span>
+
+    <button wire:click="$toggle('sortAsc')">
+        Sort {{ $sortAsc ? 'Descending' : 'Ascending' }}
+    </button>
+</form>
+
+@island
+    <div>{{ $this->total }}</div>
+@endisland
+
+@island(lazy: true)
+    @placeholder
+        <div class="animate-pulse">Loading...</div>
+    @endplaceholder
+
+    <div>{{ $this->slowApiCall }}</div>
+@endisland
+
+@island(name: 'stats')
+    <div>Stats: {{ $this->stats }}</div>
+@endisland
+
+<button type="button" wire:click="$refresh" wire:island="stats">
+    Refresh stats
+</button>
+
+<livewire:dynamic-component :is="$current" />
+
+<nav>
+    <a href="/posts" wire:navigate.hover>Posts</a>
+    <a href="/pieces" wire:navigate>Pieces</a>
+</nav>
+
+@persist('player')
+    <audio src="{{ $song->file }}" controls></audio>
+@endpersist
+
+@script
+<script>
+    this.$js.toggle = () => {
+        $wire.flag = !$wire.flag;
+        $wire.toggleFlag();
+    };
+</script>
+@endscript
+
+<div x-data="{ open: false }">
+    <button x-on:click="open = !open">Toggle Modal</button>
+
+    @teleport('body')
+        <div x-show="open">
+        </div>
+    @endteleport
+</div>

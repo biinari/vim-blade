@@ -36,6 +36,7 @@ syn keyword bladeKeyword @if @elseif @foreach @forelse @for @while @can @cannot 
     \ @includeUnless @once @pushOnce @pushIf @elsePushIf @elsePush @prependOnce @hasstack @context @session @use
     \ @aware @method @fragment @canany @elsecanany @elseauth @elseguest @bool @vite @dd @dump @js
     \ @extendsFirst
+    \ @island @persist @teleport
     \ nextgroup=bladePhpParenBlock skipwhite containedin=ALLBUT,@bladeExempt
 
 syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse @endwhile @endcan
@@ -43,6 +44,8 @@ syn keyword bladeKeyword @else @endif @endunless @endfor @endforeach @endforelse
     \ @endslot @endprepend @endisset @endempty @endauth @endguest @endswitch @enderror @endproduction
     \ @endenv @endonce @endPushOnce @endPushIf @endPrependOnce @endcontext @endsession @default @endfragment
     \ @csrf @endcanany @viteReactRefresh @endlang
+    \ @assets @blaze @placeholder @script @endassets @endisland @endpersist @endplaceholder @endscript @endteleport
+    \ @livewireStyles @livewireScripts @livewireScriptConfig
     \ containedin=ALLBUT,@bladeExempt
 
 syn keyword bladeAttrParen @class @style @checked @selected @disabled @readonly @required
