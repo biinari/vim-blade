@@ -70,6 +70,15 @@ syn region  bladePhpParenBlock  matchgroup=bladeDelimiter start="\s*(" end=")" c
 syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start='\(\<:[A-Za-z0-9-\.]\+=\)\@50<="' end='"' contains=@bladePhp contained
 syn region  bladePhpQuoteBlock  matchgroup=bladeDelimiter start="\(\<:[A-Za-z0-9-\.]\+=\)\@50<='" end="'" contains=@bladePhp contained
 
+syn region bladeAttrScript start=+\<x-\a\+\%([:\.][A-Za-z0-9]\+\)*\s*=[\t ]*'+ end=+'+ keepend contains=bladeAttrScriptSQ,bladeAttrEq containedin=ALLBUT,@bladeAttrExempt
+syn region bladeAttrScript start=+\<x-\a\+\%([:\.][A-Za-z0-9]\+\)*\s*=[\t ]*"+ end=+"+ keepend contains=bladeAttrScriptDQ,bladeAttrEq containedin=ALLBUT,@bladeAttrExempt
+
+syn region bladeAttrScript start=+\<wire:\%(\%(key\|loading\|navigate\|current\|cloak\|dirty\|confirm\|transition\|offline\|ignore\|ref\|replace\|sort\|stream\)\>\)\@!\a\+\%([:\.][A-Za-z0-9-]\+\)*\s*=[\t ]*'+ end=+'+ keepend contains=bladeAttrScriptSQ,bladeAttrEq containedin=ALLBUT,@bladeAttrExempt
+syn region bladeAttrScript start=+\<wire:\%(\%(key\|loading\|navigate\|current\|cloak\|dirty\|confirm\|transition\|offline\|ignore\|ref\|replace\|sort\|stream\)\>\)\@!\a\+\%([:\.][A-Za-z0-9-]\+\)*\s*=[\t ]*"+ end=+"+ keepend contains=bladeAttrScriptDQ,bladeAttrEq containedin=ALLBUT,@bladeAttrExempt
+
+syn region bladeAttrScriptSQ contained start=+'+ms=s+1 end=+'+me=s-1 contains=@htmlJavaScript
+syn region bladeAttrScriptDQ contained start=+"+ms=s+1 end=+"+me=s-1 contains=@htmlJavaScript
+
 syn cluster bladePhp contains=@phpClTop
 syn cluster bladeExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,bladePhpQuoteBlock,@htmlTop
 syn cluster bladeAttrExempt contains=bladeComment,bladePhpRegion,bladePhpParenBlock,bladePhpQuoteBlock
@@ -89,6 +98,10 @@ hi def link bladeAttrParen      bladeAttr
 hi def link bladeAttrString     bladeAttr
 hi def link bladeAttrVar        bladeAttr
 hi def link bladeAttrEq         htmlTag
+hi def link bladeAttrScript     htmlEvent
+
+hi def link bladeAttrScriptSQ   htmlEvent
+hi def link bladeAttrScriptDQ   htmlEvent
 
 let b:current_syntax = 'blade'
 
